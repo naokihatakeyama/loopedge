@@ -1,7 +1,7 @@
 version: "2"
 services:
   grafana:
-    image: Dennou-Coil/HoloSightseeing:0
+    image: Dennou-Coil/HoloSightseeing
     container_name: zigsim
     volumes:
       - zigsim-data:/var/lib/zigsim
