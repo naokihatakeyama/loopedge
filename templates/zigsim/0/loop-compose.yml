@@ -1,0 +1,11 @@
+.catalog:
+  name: zigsim
+  version: 0
+  uuid: zigsim-0
+  questions:
+  - variable: RESTART
+    description: 'Application restart option: no, always, on-failure'
+    label: 'Restart:'
+    required: true
+    default: "always"
+    type: string
