@@ -1,0 +1,15 @@
+version: "2"
+services:
+  grafana:
+    image: Dennou-Coil/HoloSightseeing:0
+    container_name: zigsim
+    volumes:
+      - zigsim-data:/var/lib/zigsim
+    ports:
+      - 50000:50000
+    restart: "${RESTART}"
+    network_mode: bridge
+    
+volumes:
+  zigsim-data:
+    driver: local
