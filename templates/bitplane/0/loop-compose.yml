@@ -1,0 +1,11 @@
+.catalog:
+  name: bitplane
+  version: 0
+  uuid: bitplane-0
+  questions:
+  - variable: RESTART
+    description: 'Application restart option: no, always, on-failure'
+    label: 'Restart:'
+    required: true
+    default: "always"
+    type: string
