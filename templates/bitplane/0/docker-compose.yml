@@ -1,0 +1,14 @@
+  
+version: "2"
+services:
+  bitplane:
+    image: bitplane/temper:0
+    container_name: bitplane
+    volumes:
+      - temper-data:/usr/local/bin/temper
+    restart: "${RESTART}"
+    network_mode: bridge
+    
+volumes:
+  grafana-data:
+    temper: local
