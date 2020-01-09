@@ -1,3 +1,0 @@
-
-bitnami/jasperreports
-
