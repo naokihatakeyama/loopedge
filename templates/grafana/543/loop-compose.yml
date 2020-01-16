@@ -1,7 +1,7 @@
 .catalog:
   name: grafana
-  version: 5.4.3
-  uuid: grafana-543
+  version: 6.2.5
+  uuid: grafana-625
   questions:
   - variable: RESTART
     description: 'Application restart option: no, always, on-failure'
