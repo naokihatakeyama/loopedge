@@ -23,7 +23,10 @@ services:
     expose:
       - 80
     ports:
-      - 8090:8090
+      - 8090:80
+    networks:
+      app_net:
+        ipv4_address: 10.30.50.10
   mysql:
     image: mysql:5.7
     restart: unless-stopped
@@ -37,3 +40,6 @@ services:
       - --query_cache_size=36737518
       - --character_set_server=utf8
       - --bind-address=0.0.0.0
+    networks:
+      app_net:
+        ipv4_address: 10.30.50.11
