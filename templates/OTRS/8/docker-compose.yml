@@ -22,8 +22,8 @@ services:
       - mysql
     expose:
       - 80
-    # ports:
-    #   - 80:80
+    ports:
+      - 8090:8090
   mysql:
     image: mysql:5.7
     restart: unless-stopped
