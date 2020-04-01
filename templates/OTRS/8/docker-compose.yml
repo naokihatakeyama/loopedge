@@ -1,53 +1,41 @@
-version: '2'
+version: '3'
+
 services:
   otrs:
     image: juanluisbaptiste/otrs:latest
+    build: otrs
     ports:
-    - "8010:8010"
-    links:
-    - mariadb:mariadb
-    - postfix:postfix
-    volumes_from:
-    - data
-    environment:
-        MYSQL_ROOT_PASSWORD: changeme
-        OTRS_ROOT_PASSWORD: changeme
-        OTRS_NUMBER_GENERATOR: Date
-        OTRS_LANGUAGE: es
-        OTRS_POSTMASTER_FETCH_TIME: 5
-
+      - '80:80'
+    # If running behind a proxy container, expose the ports instead
+    # and link the proxy container to this one.
+    #  expose:
+    #  - "80"
+    depends_on:
+      - mariadb
+      - postfix
+    env_file: .env
+    volumes:
+      - './volumes/config:/opt/otrs/Kernel'
+      # Uncomment if using OTRS_ARTICLE_STORAGE_TYPE=ArticleStorageFS
+      #- ./volumes/article:/opt/otrs/var/article
+      - ./volumes/skins:/opt/otrs/var/httpd/htdocs/skins/
+      - './volumes/backup:/var/otrs/backups'
+      - './volumes/addons:/opt/otrs/addons'
+      - ./volumes/db_upgrade:/opt/otrs/db_upgrade
+      - '/etc/localtime:/etc/localtime:ro'
   mariadb:
     image: juanluisbaptiste/otrs-mariadb:latest
+    build: mariadb
     expose:
-    - "3306"
-    volumes_from:
-    - data
-    environment:
-        MYSQL_ROOT_PASSWORD: changeme
-
-  postfix:
-     image: juanluisbaptiste/postfix:latest
-     expose:
-     - "25"
-     environment:
-       SMTP_SERVER=smtp.yourcompany.com
-       SMTP_USERNAME=otrs@yourcompany.com
-       SMTP_PASSWORD=xxxxxxx
-       SERVER_HOSTNAME=support.yourcompany.com
-
-#  nginx:
-#   image: juanluisbaptiste/bigbluebutton-proxy
-#    ports:
-#      - "80:80"
-#      - "443:443"
-#    volumes:
-#     - /var/run/docker.sock:/tmp/docker.sock
-#      - "/etc/localtime:/etc/localtime:ro"
-
-  data:
-    image: centos/mariadb:latest
+      - "3306"
+    env_file: .env
     volumes:
-    - /var/lib/mysql
-    - "./otrs/backup:/var/otrs/backups"
-
-    command: /bin/true
+      - './volumes/mysql:/var/lib/mysql'
+      - '/etc/localtime:/etc/localtime:ro'
+  postfix:
+    image: juanluisbaptiste/postfix:latest
+    expose:
+      - '25'
+    # See juanluisbaptiste/postfix github page for the contents
+    # and an explanation of credentials-smtp.
+    env_file: .env
