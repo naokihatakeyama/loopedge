@@ -1,0 +1,11 @@
+catalog:
+  name: OTRS
+  version: 8
+  uuid: OTRS-625
+  questions:
+  - variable: RESTART
+    description: 'Application restart option: no, always, on-failure'
+    label: 'Restart:'
+    required: true
+    default: "always"
+    type: string
