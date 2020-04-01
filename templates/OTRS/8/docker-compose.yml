@@ -1,7 +1,7 @@
   
 version: "3"
 services:
-  grafana:
+  otrs:
     image: OTRS/otrs:8
     container_name: OTRS
     volumes:
