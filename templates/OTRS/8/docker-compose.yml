@@ -23,7 +23,9 @@ services:
     expose:
       - 80
     ports:
-      - 8090:80
+      - 8880:80
+    networks:
+      - proxy_network
   mysql:
     image: mysql:5.7
     restart: unless-stopped
@@ -37,3 +39,6 @@ services:
       - --query_cache_size=36737518
       - --character_set_server=utf8
       - --bind-address=0.0.0.0
+networks:
+  proxy_network:
+    external: true
