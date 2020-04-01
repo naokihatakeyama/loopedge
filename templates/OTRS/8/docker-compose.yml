@@ -3,7 +3,7 @@ services:
   otrs:
     image: juanluisbaptiste/otrs:latest
     ports:
-    - "8010:8010"
+    - "80:80"
     links:
     - mariadb:mariadb
     - postfix:postfix
