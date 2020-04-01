@@ -24,9 +24,6 @@ services:
       - 80
     ports:
       - 8090:80
-    networks:
-      app_net:
-        ipv4_address: 10.30.50.1
   mysql:
     image: mysql:5.7
     restart: unless-stopped
