@@ -23,7 +23,7 @@ services:
     expose:
       - 8880
     ports:
-      - 8880:80
+      - 8880:8880
   mysql:
     image: mysql:5.7
     restart: unless-stopped
