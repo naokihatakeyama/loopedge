@@ -21,7 +21,7 @@ services:
     depends_on:
       - mysql
     expose:
-      - 80
+      - 8880
     ports:
       - 8880:80
   mysql:
