@@ -1,1 +1,11 @@
-a
+.catalog:
+  name: grafana
+  version: latest
+  uuid: grafana-latest
+  questions:
+  - variable: RESTART
+    description: 'Application restart option: no, always, on-failure'
+    label: 'Restart:'
+    required: true
+    default: "always"
+    type: string
