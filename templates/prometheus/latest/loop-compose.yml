@@ -1,1 +1,11 @@
-あああ
+.catalog:
+  name: promethus
+  version: latest
+  uuid: prometheus-latest
+  questions:
+  - variable: RESTART
+    description: 'Application restart option: no, always, on-failure'
+    label: 'Restart:'
+    required: true
+    default: "always"
+    type: string
