@@ -1,5 +1,5 @@
 .catalog:
-  name: promethus
+  name: prometheus
   version: latest
   uuid: prometheus-latest
   questions:
