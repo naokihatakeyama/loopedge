@@ -1,7 +1,7 @@
 .catalog:
   name: prometheus
   version: latest
-  uuid: prometheus-latest
+  uuid: prometheus-0
   questions:
   - variable: RESTART
     description: 'Application restart option: no, always, on-failure'
